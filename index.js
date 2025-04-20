@@ -7,7 +7,7 @@ const mongoose = require("mongoose")
 const {studentRouter,managementRouter, staffRouter} = require("./router/router")
 
 const corsConfig = {
-    origin : ["https://database-cloud.vercel.app"],
+    origin : ["https://cloud-database.vercel.app"],
     credential : true,
     methods : ["GET","POST","PUT","DELETE"],
     headers:["*"]
