@@ -62,6 +62,10 @@ const staff = mongoose.Schema({
         phone:{type:String},
         email:{type:String},
         image:{type:String},
+        session:{type:String},
+        term:{type:String},
+        time:{type:String},
+        type:{type:String},
         Eng:[{
               question:{type:String},
               a:{type:String},
