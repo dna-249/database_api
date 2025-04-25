@@ -43,8 +43,8 @@ const getOneManagement  =  async(req,res)=>{
 
 const putOneManagement =  async(req,res)=>{
     try {
-        const {id}=req.params
-        const student = await Management.findByIdAndUpdate(id, req.body)
+        const {_id}=req.params
+        const student = await Management.findByIdAndUpdate({_id}, req.body)
         
         if(!student){
             res.status(404).json("student not found")
