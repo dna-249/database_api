@@ -176,7 +176,6 @@ const putPullStaff = async (req,res) => {
     const {_id} = req.params;
     const {_id2} = req.params;
      const {object2}=req.params
-    const {eng,math,phy,chem,bio} = req.body;
       await Staff.findOneAndUpdate({_id},
         {$pull:
           {[`${object2}`]:{_id:_id2}}
