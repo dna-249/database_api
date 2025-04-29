@@ -66,6 +66,7 @@ const staff = mongoose.Schema({
         term:{type:String},
         time:{type:String},
         type:{type:String},
+        activity:{type:String},
         Eng:[{
               question:{type:String},
               a:{type:String},

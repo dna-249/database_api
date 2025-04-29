@@ -5,7 +5,7 @@ const{ Staff} = require("../model/model")
 
 const postStaff = async(req,res) => {
     const {name,password,email,classes,user,phone,adm,staff,key,
-          question,ans, a,b,c,d,session,term,date,type,image,time
+          question,ans, a,b,c,d,session,term,date,type,image,time,activity
     } = req.body
     
      await Staff.create({
@@ -23,6 +23,7 @@ const postStaff = async(req,res) => {
         term:term,
         time:time,
         type:type,
+        activity:activity,
 
        
       Eng:[{
