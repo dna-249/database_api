@@ -105,8 +105,14 @@ const getAllStaff = async (req,res) =>{
 const getOneStaff =  async(req,res)=>{
     try{
     const {_id} = req.params;
+    if(id){
     const student = await Staff.findById({_id:_id})
     res.status(200).json(student)
+     } else {
+        const {classes} = req.params;
+        const student = await Staff.findOne({class:classes})
+    res.status(200).json(student)
+    }
     }catch(err){
         res.status(500).json({message: err.message})
     }
