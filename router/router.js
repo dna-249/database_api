@@ -28,7 +28,7 @@ managementRouter.post('/',managementSignup,postManagement)
 managementRouter.get('/', getAllManagement)
 managementRouter.get('/:_id', getOneManagement)
 managementRouter.put('/:_id', putOneManagement)
-managementRouter.put('/pull/:_id/_id2', putPullManagement)
+managementRouter.put('/pull/:_id/:_id2', putPullManagement)
 managementRouter.put('/push/:_id/:key/:value',putPushManagement)
 managementRouter.delete("/delete/:_id", deleteOneManagement)
 
