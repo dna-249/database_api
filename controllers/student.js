@@ -103,8 +103,7 @@ const putOneStudent =  async(req,res)=>{
 const putPullStudent = async (req,res) => {
     const {_id} = req.params;
     const {_id2} = req.params;
-    const {eng,math,phy,chem,bio} = req.body;
-    const student =  await Student.findOneAndUpdate({_id},
+    const student =  await Student.findOneAndUpdate({_id:_id},
         {$pull:
           {attend:{_id:_id2}}
       })
@@ -151,7 +150,7 @@ const putSetStudent = async (req,res) => {
 const deleteOneStudent =  async(req,res)=>{
     try {
         const {_id}=req.params
-        const student = await Student.findByIdAndDelete({_id}, req.body)
+        const student = await Student.findByIdAndDelete({_id:_id}, req.body)
 
         if(!student){
             res.status(404).json("student not found")
