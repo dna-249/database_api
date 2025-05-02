@@ -59,7 +59,7 @@ const putOneManagement =  async(req,res)=>{
 const putPullManagement = async (req,res) => {
     const {_id} = req.params;
     const {_id2} = req.params;
-      await Management.findOneAndUpdate({_id:_id},
+      await Management.findByIdAndUpdate({_id:_id},
         {$pull:
           {admissions:{_id:_id2}}
       })
