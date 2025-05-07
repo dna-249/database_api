@@ -113,7 +113,7 @@ const putPushManagementChat = async(req,res)=>{
         
                 const {_id} =req.params;
                 const {object} =req.params;
-                const {date, subject,message,id}= req.body;
+                const {date, subject,message, myId}= req.body;
                 const student = await Management.findByIdAndUpdate({_id:_id},{
                     $push:{
                       [`${object}`]:[
