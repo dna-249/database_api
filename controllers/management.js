@@ -3,7 +3,7 @@ const { Management } = require("../model/model")
 
 
 const postManagement = async(req,res) => {
-    const {name,phone,password,email,user,adm,key,image,date,subject,message} = req.body
+    const {name,phone,password,email,user,adm,key,image,date,subject,message,userId} = req.body
      await Management.create({
                                 key:key,
                                 name:name,
@@ -20,16 +20,21 @@ const postManagement = async(req,res) => {
                                 managementChat:[{
                                     date:date,
                                     subject:subject,
-                                    message:message}],
+                                    message:message,
+                                    userId:userId
+                                }],
 
                                 staffChat:[{
                                     date:date,
                                     subject:subject,
-                                    message:message}],
+                                    userId:userId,
+                                    message:message,
+                                }],
                                 studentChat:[{
                                     date:date,
                                     subject:subject,
-                                    message:message}]
+                                    userId:userId,
+                                    message:message,}]
                                 
                                 })
                  console.log("successfully uploaded")
@@ -101,14 +106,16 @@ const putPushManagementChat = async(req,res)=>{
         
                 const {_id} =req.params;
                 const {object} =req.params;
-                const {date, subject, message}= req.body;
+                const {date, subject, message,userId}= req.body;
                 const student = await Management.findByIdAndUpdate({_id:_id},{
                     $push:{
                       [`${object}`]:[
                         {
                             date:date,
                             subject:subject,
-                            message:message}]
+                            message:message,
+                            userId:userId
+                        }]
                     }
                 })
                   res.status(200).json(student)

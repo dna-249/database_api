@@ -15,20 +15,23 @@ const student= mongoose.Schema({
         managementChat:[{
                 date:{type:String},
                 subject:{type:String},
-                message:{type:String}
+                message:{type:String},
+                userId:{type:String},
         }],
 
         staffChat:[{
                  date:{type:String},
                  subject:{type:String},
-                 message:{type:String}
-                }],
+                 message:{type:String},
+                userId:{type:String},
+        }],
                 
         studentChat:[{
                  date:{type:String},
                  subject:{type:String},
-                 message:{type:String}
-              }],
+                 message:{type:String},
+                 userId:{type:String},
+                }],
         attend:[{
                 date:{type:String},
                 mon:{type:String},
@@ -87,20 +90,23 @@ const staff = mongoose.Schema({
         managementChat:[{
                 date:{type:String},
                 subject:{type:String},
-                message:{type:String}
+                message:{type:String},
+                userId:{type:String}
         }],
 
         staffChat:[{
                  date:{type:String},
                  subject:{type:String},
-                 message:{type:String}
+                userId:{type:String},
+                message:{type:String},
                 }],
                 
         studentChat:[{
                  date:{type:String},
                  subject:{type:String},
-                 message:{type:String}
-              }],
+                 message:{type:String},
+                 userId:{type:String}
+                }],
         Eng:[{
               question:{type:String},
               a:{type:String},
