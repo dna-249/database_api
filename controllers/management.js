@@ -3,7 +3,7 @@ const { Management } = require("../model/model")
 
 
 const postManagement = async(req,res) => {
-    const {name,phone,password,email,user,adm,key,image,date,subject,message,Id} = req.body
+    const {name,phone,password,email,user,adm,key,image,date,subject,message,id} = req.body
      await Management.create({
                                 key:key,
                                 name:name,
@@ -21,26 +21,26 @@ const postManagement = async(req,res) => {
                                     date:date,
                                     subject:subject,
                                     message:message,
-                                    Id:Id
+                                    id:id
                                 }],
 
                                 staffChat:[{
                                     date:date,
                                     subject:subject,
-                                    Id:Id,
+                                    id:id,
                                     message:message,
                                 }],
 
                                 allChat:[{
                                     date:date,
                                     subject:subject,
-                                    Id:Id,
+                                    id:id,
                                     message:message,
                                 }],
                                 studentChat:[{
                                     date:date,
                                     subject:subject,
-                                    Id:Id,
+                                    id:id,
                                     message:message}]
                                 
                                 })
@@ -113,7 +113,7 @@ const putPushManagementChat = async(req,res)=>{
         
                 const {_id} =req.params;
                 const {object} =req.params;
-                const {date, subject,message,Id}= req.body;
+                const {date, subject,message,id}= req.body;
                 const student = await Management.findByIdAndUpdate({_id:_id},{
                     $push:{
                       [`${object}`]:[
@@ -121,7 +121,7 @@ const putPushManagementChat = async(req,res)=>{
                             date:date,
                             subject:subject,
                             message:message,
-                            Id:Id
+                            id:id
                         }]
                     }
                 })
