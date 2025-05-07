@@ -4,7 +4,7 @@ const {Student} = require("../model/model")
 
 const postStudent = async(req,res) => {
     const {name,password,phone,email,user,key,classes,
-           exam,test,ca,ass,image,
+           exam,test,ca,ass,image,subject,message,
            mon,tue,wed,thu,fri,date
     } = req.body
      await Student.create({
@@ -17,6 +17,21 @@ const postStudent = async(req,res) => {
         email:email,
         class:classes,
         image:image,
+        managementChat:[{
+            date:date,
+            subject:subject,
+            message:message}],
+
+        staffChat:[{
+            date:date,
+            subject:subject,
+            message:message}],
+
+        studentChat:[{
+            date:date,
+            subject:subject,
+            message:message}],
+
         attend:[{
                 date:date,
                 mon:mon,
@@ -123,6 +138,18 @@ try {
         }
     })
       res.status(200).json(student)}
+      else if(typeof message !== "undefined"){
+        const {date, subject, message}= req.body;
+        const student = await Student.findByIdAndUpdate({_id:_id},{
+            $push:{
+              attend:[
+                {
+                    date:date,
+                    subject:subject,
+                    message:message}]
+            }
+        })
+          res.status(200).json(student)}
       else{
         const student = await Student.findByIdAndUpdate({_id:_id}, req.body)
         res.status(200).json(student)

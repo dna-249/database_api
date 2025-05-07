@@ -12,6 +12,23 @@ const student= mongoose.Schema({
         email:{type:String},
         image:{type:String},
         class:{type:String},
+        managementChat:[{
+                date:{type:String},
+                subject:{type:String},
+                message:{type:String}
+        }],
+
+        staffChat:[{
+                 date:{type:String},
+                 subject:{type:String},
+                 message:{type:String}
+                }],
+                
+        studentChat:[{
+                 date:{type:String},
+                 subject:{type:String},
+                 message:{type:String}
+              }],
         attend:[{
                 date:{type:String},
                 mon:{type:String},
@@ -67,6 +84,23 @@ const staff = mongoose.Schema({
         time:{type:String},
         type:{type:String},
         activity:{type:String},
+        managementChat:[{
+                date:{type:String},
+                subject:{type:String},
+                message:{type:String}
+        }],
+
+        staffChat:[{
+                 date:{type:String},
+                 subject:{type:String},
+                 message:{type:String}
+                }],
+                
+        studentChat:[{
+                 date:{type:String},
+                 subject:{type:String},
+                 message:{type:String}
+              }],
         Eng:[{
               question:{type:String},
               a:{type:String},
@@ -141,7 +175,24 @@ const management = mongoose.Schema({
         admissions:[{ key:{type:String} }],
         management:[{  key:{type:String}  }],
         staff:[{  key:{type:String}  }],
-        classes:[{  key:{type:String}  }]
+        classes:[{  key:{type:String}  }],
+        managementChat:[{
+                date:{type:String},
+                subject:{type:String},
+                message:{type:String}
+        }],
+
+        staffChat:[{
+                 date:{type:String},
+                 subject:{type:String},
+                 message:{type:String}
+                }],
+
+        studentChat:[{
+                 date:{type:String},
+                 subject:{type:String},
+                 message:{type:String}
+              }]
 })
 
 const Student = mongoose.model("student",student)

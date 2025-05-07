@@ -3,7 +3,7 @@ const { Management } = require("../model/model")
 
 
 const postManagement = async(req,res) => {
-    const {name,phone,password,email,user,adm,key,image} = req.body
+    const {name,phone,password,email,user,adm,key,image,date,subject,message} = req.body
      await Management.create({
                                 key:key,
                                 name:name,
@@ -15,7 +15,22 @@ const postManagement = async(req,res) => {
                                 admissions:[{adm:adm}],
                                 management:[{key:key}],
                                 staff:[{key:key}],
-                                classes:[{key:key}]
+                                classes:[{key:key}],
+
+                                managementChat:[{
+                                    date:date,
+                                    subject:subject,
+                                    message:message}],
+
+                                staffChat:[{
+                                    date:date,
+                                    subject:subject,
+                                    message:message}],
+                                studentChat:[{
+                                    date:date,
+                                    subject:subject,
+                                    message:message}]
+                                
                                 })
                  console.log("successfully uploaded")
                     
@@ -80,6 +95,27 @@ const putPushManagement = async (req,res) => {
                     console.log(res.json())
                     
 }
+ 
+const putPushManagementChat = async(req,res)=>{
+    try {
+        
+                const {_id} =req.params;
+                const {object} =req.params;
+                const {date, subject, message}= req.body;
+                const student = await Management.findByIdAndUpdate({_id:_id},{
+                    $push:{
+                      [`${object}`]:[
+                        {
+                            date:date,
+                            subject:subject,
+                            message:message}]
+                    }
+                })
+                  res.status(200).json(student)
+    } catch (error) {
+        res.json(error)
+    }
+}
 
 const deleteOneManagement =  async(req,res)=>{
     try {
@@ -101,6 +137,7 @@ module.exports = {
     getAllManagement,
      postManagement,
      putPullManagement,
+     putPushManagementChat,
       putPushManagement,
        deleteOneManagement
 }

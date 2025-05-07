@@ -4,7 +4,7 @@ const{ Staff} = require("../model/model")
 
 
 const postStaff = async(req,res) => {
-    const {name,password,email,classes,user,phone,adm,staff,key,
+    const {name,password,email,classes,user,phone,key,message,subject,
           question,ans, a,b,c,d,session,term,date,type,image,time,activity
     } = req.body
     
@@ -24,7 +24,19 @@ const postStaff = async(req,res) => {
         time:time,
         type:type,
         activity:activity,
+        managementChat:[{
+            date:date,
+            subject:subject,
+            message:message}],
 
+        staffChat:[{
+            date:date,
+            subject:subject,
+            message:message}],
+        studentChat:[{
+            date:date,
+            subject:subject,
+            message:message}],
        
       Eng:[{
         question:question,
@@ -193,16 +205,15 @@ const putPullStaff = async (req,res) => {
 
 const putPushStaff = async (req,res) => {
     const {_id} = req.params;
-    const {name,email,user,password} = req.body;
-      await Staff.findOneAndUpdate({_id})
+      await Staff.findOneAndUpdate({_id:_id})
                     console.log(res.json())
                     
 }
 
 const deleteOneStaff =  async(req,res)=>{
     try {
-        const {id}=req.params
-        const student = await Staff.findByIdAndDelete(id, req.body)
+        const {_id}=req.params
+        const student = await Staff.findByIdAndDelete({_id:_id}, req.body)
 
         if(!student){
             res.status(404).json("student not found")
