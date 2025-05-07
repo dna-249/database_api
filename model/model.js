@@ -204,19 +204,22 @@ const management = mongoose.Schema({
         managementChat:[{
                 date:{type:String},
                 subject:{type:String},
-                message:{type:String}
+                message:{type:String},
+                myId:{type:String}
         }],
 
         staffChat:[{
                  date:{type:String},
                  subject:{type:String},
-                 message:{type:String}
+                 message:{type:String},
+                 myId:{type:String}
                 }],
 
         studentChat:[{
                  date:{type:String},
                  subject:{type:String},
-                 message:{type:String}
+                 message:{type:String},
+                 myId:{type:String}
               }]
 })
 
