@@ -30,11 +30,18 @@ const postManagement = async(req,res) => {
                                     userId:userId,
                                     message:message,
                                 }],
+
+                                allChat:[{
+                                    date:date,
+                                    subject:subject,
+                                    userId:userId,
+                                    message:message,
+                                }],
                                 studentChat:[{
                                     date:date,
                                     subject:subject,
                                     userId:userId,
-                                    message:message,}]
+                                    message:message}]
                                 
                                 })
                  console.log("successfully uploaded")
@@ -106,7 +113,7 @@ const putPushManagementChat = async(req,res)=>{
         
                 const {_id} =req.params;
                 const {object} =req.params;
-                const {date, subject, message,userId}= req.body;
+                const {date, subject,message,userId}= req.body;
                 const student = await Management.findByIdAndUpdate({_id:_id},{
                     $push:{
                       [`${object}`]:[

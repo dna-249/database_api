@@ -12,6 +12,13 @@ const student= mongoose.Schema({
         email:{type:String},
         image:{type:String},
         class:{type:String},
+
+        allChat:[{
+                date:{type:String},
+                subject:{type:String},
+                message:{type:String},
+                userId:{type:String}
+        }],
         managementChat:[{
                 date:{type:String},
                 subject:{type:String},
@@ -107,6 +114,12 @@ const staff = mongoose.Schema({
                  message:{type:String},
                  userId:{type:String}
                 }],
+        allChat:[{
+                date:{type:String},
+                subject:{type:String},
+                message:{type:String},
+                userId:{type:String}
+        }],
         Eng:[{
               question:{type:String},
               a:{type:String},
@@ -182,6 +195,12 @@ const management = mongoose.Schema({
         management:[{  key:{type:String}  }],
         staff:[{  key:{type:String}  }],
         classes:[{  key:{type:String}  }],
+        allChat:[{
+                date:{type:String},
+                subject:{type:String},
+                message:{type:String},
+                userId:{type:String}
+        }],
         managementChat:[{
                 date:{type:String},
                 subject:{type:String},

@@ -4,7 +4,7 @@ const{ Staff} = require("../model/model")
 
 
 const postStaff = async(req,res) => {
-    const {name,password,email,classes,user,phone,key,message,subject,
+    const {name,password,email,classes,user,phone,key,message,subject,userId,
           question,ans, a,b,c,d,session,term,date,type,image,time,activity
     } = req.body
     
@@ -24,19 +24,30 @@ const postStaff = async(req,res) => {
         time:time,
         type:type,
         activity:activity,
+        allChat:[{
+            date:date,
+            subject:subject,
+            userId:userId,
+            message:message,
+        }],
         managementChat:[{
             date:date,
             subject:subject,
-            message:message}],
+            userId:userId,
+            message:message,}],
 
         staffChat:[{
             date:date,
             subject:subject,
-            message:message}],
+            userId:userId,
+            message:message,}],
+
         studentChat:[{
             date:date,
             subject:subject,
-            message:message}],
+            userId:userId,
+            message:message,}],
+
        
       Eng:[{
         question:question,
