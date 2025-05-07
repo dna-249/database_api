@@ -17,27 +17,27 @@ const student= mongoose.Schema({
                 date:{type:String},
                 subject:{type:String},
                 message:{type:String},
-                userId:{type:String}
+                Id:{type:String}
         }],
         managementChat:[{
                 date:{type:String},
                 subject:{type:String},
                 message:{type:String},
-                userId:{type:String},
+                Id:{type:String},
         }],
 
         staffChat:[{
                  date:{type:String},
                  subject:{type:String},
                  message:{type:String},
-                userId:{type:String},
+                Id:{type:String},
         }],
                 
         studentChat:[{
                  date:{type:String},
                  subject:{type:String},
                  message:{type:String},
-                 userId:{type:String},
+                 Id:{type:String},
                 }],
         attend:[{
                 date:{type:String},
@@ -98,13 +98,13 @@ const staff = mongoose.Schema({
                 date:{type:String},
                 subject:{type:String},
                 message:{type:String},
-                userId:{type:String}
+                Id:{type:String}
         }],
 
         staffChat:[{
                  date:{type:String},
                  subject:{type:String},
-                userId:{type:String},
+                Id:{type:String},
                 message:{type:String},
                 }],
                 
@@ -112,13 +112,13 @@ const staff = mongoose.Schema({
                  date:{type:String},
                  subject:{type:String},
                  message:{type:String},
-                 userId:{type:String}
+                 Id:{type:String}
                 }],
         allChat:[{
                 date:{type:String},
                 subject:{type:String},
                 message:{type:String},
-                userId:{type:String}
+                Id:{type:String}
         }],
         Eng:[{
               question:{type:String},
@@ -199,7 +199,7 @@ const management = mongoose.Schema({
                 date:{type:String},
                 subject:{type:String},
                 message:{type:String},
-                userId:{type:String}
+                Id:{type:String}
         }],
         managementChat:[{
                 date:{type:String},

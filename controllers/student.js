@@ -5,7 +5,7 @@ const {Student} = require("../model/model")
 const postStudent = async(req,res) => {
     const {name,password,phone,email,user,key,classes,
            exam,test,ca,ass,image,subject,message,
-           mon,tue,wed,thu,fri,date,userId
+           mon,tue,wed,thu,fri,date,Id
     } = req.body
      await Student.create({
            
@@ -20,25 +20,25 @@ const postStudent = async(req,res) => {
         allChat:[{
             date:date,
             subject:subject,
-            userId:userId,
+            Id:Id,
             message:message,
         }],
         managementChat:[{
             date:date,
             subject:subject,
-            userId:userId,
+            Id:Id,
             message:message,}],
 
         staffChat:[{
             date:date,
             subject:subject,
-            userId:userId,
+            Id:Id,
             message:message,}],
 
         studentChat:[{
             date:date,
             subject:subject,
-            userId:userId,
+            Id:Id,
             message:message,}],
 
         attend:[{
