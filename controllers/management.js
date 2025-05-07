@@ -3,7 +3,7 @@ const { Management } = require("../model/model")
 
 
 const postManagement = async(req,res) => {
-    const {name,phone,password,email,user,adm,key,image,date,subject,message,id} = req.body
+    const {name,phone,password,email,user,adm,key,image,date,subject,message,myId} = req.body
      await Management.create({
                                 key:key,
                                 name:name,
@@ -21,27 +21,27 @@ const postManagement = async(req,res) => {
                                     date:date,
                                     subject:subject,
                                     message:message,
-                                    id:id
+                                    myId:myId
                                 }],
 
                                 staffChat:[{
                                     date:date,
                                     subject:subject,
-                                    id:id,
+                                    myId:myId,
                                     message:message,
                                 }],
 
                                 allChat:[{
                                     date:date,
                                     subject:subject,
-                                    id:id,
                                     message:message,
+                                     myId:myId
                                 }],
                                 studentChat:[{
                                     date:date,
                                     subject:subject,
-                                    id:id,
-                                    message:message}]
+                                    message:message,
+                                     myId:myId,}]
                                 
                                 })
                  console.log("successfully uploaded")
@@ -121,7 +121,7 @@ const putPushManagementChat = async(req,res)=>{
                             date:date,
                             subject:subject,
                             message:message,
-                            id:id
+                            myId:myId
                         }]
                     }
                 })

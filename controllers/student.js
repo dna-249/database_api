@@ -20,26 +20,29 @@ const postStudent = async(req,res) => {
         allChat:[{
             date:date,
             subject:subject,
-            id:id,
             message:message,
+            id:id,
         }],
         managementChat:[{
             date:date,
             subject:subject,
-            id:id,
-            message:message,}],
+            message:message,
+             id:id,
+        }],
 
         staffChat:[{
             date:date,
             subject:subject,
+            message:message,
             id:id,
-            message:message,}],
+        }],
 
         studentChat:[{
             date:date,
             subject:subject,
-            id:id,
-            message:message,}],
+            message:message,
+             id:id,
+        }],
 
         attend:[{
                 date:date,
