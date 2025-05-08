@@ -5,7 +5,7 @@ const {Student} = require("../model/model")
 const postStudent = async(req,res) => {
     const {name,password,phone,email,user,key,classes,
            exam,test,ca,ass,image,subject,message,
-           mon,tue,wed,thu,fri,date,id
+           mon,tue,wed,thu,fri,date,myId
     } = req.body
      await Student.create({
            
@@ -21,27 +21,27 @@ const postStudent = async(req,res) => {
             date:date,
             subject:subject,
             message:message,
-            id:id,
+            myId:myId,
         }],
         managementChat:[{
             date:date,
             subject:subject,
             message:message,
-             id:id,
+             myId:myId,
         }],
 
         staffChat:[{
             date:date,
             subject:subject,
             message:message,
-            id:id,
+            myId:myId,
         }],
 
         studentChat:[{
             date:date,
             subject:subject,
             message:message,
-             id:id,
+             myId:myId,
         }],
 
         attend:[{
@@ -130,9 +130,11 @@ const putOneStudent =  async(req,res)=>{
 const putPullStudent = async (req,res) => {
     const {_id} = req.params;
     const {_id2} = req.params;
+    const {object} = req.params
+
     const student =  await Student.findOneAndUpdate({_id:_id},
         {$pull:
-          {attend:{_id:_id2}}
+          {[`${object}`]:{_id:_id2}}
       })
       res.status(200).json(student)
                     
@@ -141,27 +143,20 @@ const putPullStudent = async (req,res) => {
 const putPushStudent = async (req,res) => {
 try {
     const {_id} = req.params
-    const {date} = req.body
+    const {object} = req.params
+    const {date, subject, message}= req.body;
     if(typeof date !== "undefined"){
     const student = await Student.findByIdAndUpdate({_id:_id},{
         $push:{
-          attend:[
-                 {date:date}]
-        }
-    })
-      res.status(200).json(student)}
-      else if(typeof message !== "undefined"){
-        const {date, subject, message}= req.body;
-        const student = await Student.findByIdAndUpdate({_id:_id},{
-            $push:{
-              attend:[
+          [`${object}`]:[
                 {
                     date:date,
                     subject:subject,
                     message:message}]
-            }
-        })
-          res.status(200).json(student)}
+        }
+    })
+      res.status(200).json(student)}
+     
       else{
         const student = await Student.findByIdAndUpdate({_id:_id}, req.body)
         res.status(200).json(student)
