@@ -152,7 +152,9 @@ try {
                 {
                     date:date,
                     subject:subject,
-                    message:message}]
+                    message:message,
+                    myId:myId
+                }]
         }
     })
       res.status(200).json(student)}
