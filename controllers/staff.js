@@ -161,7 +161,7 @@ const putOneStaff =  async(req,res)=>{
     try {
         const {_id}=req.params   
          const {object2}=req.params
-        const {question,ans, a,b,c,d,session,term,date,type}  = req.body
+        const {subject,message,myId,question,ans, a,b,c,d,session,term,date,type}  = req.body
         const student = await Staff.findByIdAndUpdate({_id:_id}, {
             $push:{
                 [`${object2}`]:[{question:question,
@@ -173,7 +173,11 @@ const putOneStaff =  async(req,res)=>{
                                     session:session,
                                     term:term,
                                     date:date,
-                                    type:type}]
+                                    type:type, 
+                                    subject:subject,
+                                    message:message,
+                                    myId:myId
+                                }]
             }
         })
         
