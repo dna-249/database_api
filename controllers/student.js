@@ -144,7 +144,7 @@ const putPushStudent = async (req,res) => {
 try {
     const {_id} = req.params
     const {object} = req.params
-    const {date, subject, message}= req.body;
+    const {date, subject, message,myId}= req.body;
     if(typeof date !== "undefined"){
     const student = await Student.findByIdAndUpdate({_id:_id},{
         $push:{
