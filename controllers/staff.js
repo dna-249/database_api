@@ -217,13 +217,33 @@ const putPullStaff = async (req,res) => {
                     res.send("successfully uploaded")
                     
 }
+const putPushStaff=async (req,res)=>{
+try {
+    const {_id}=req.params   
+     const {object2}=req.params
+    const {subject,message,myId,date}  = req.body
+    const student = await Staff.findByIdAndUpdate({_id:_id}, {
+        $push:{
+            [`${object2}`]:[{
+                                date:date,
+                                subject:subject,
+                                message:message,
+                                myId:myId
+                            }]
+        }
+    })
+    
+    if(!student){
+        res.status(404).json("student not found")
+    }
 
-const putPushStaff = async (req,res) => {
-    const {_id} = req.params;
-      await Staff.findOneAndUpdate({_id:_id})
-                    console.log(res.json())
-                    
+    res.status(200).json(student)
+} catch (error) {
+   res.status(500).json({message:error.message}) 
 }
+}
+
+
 
 const deleteOneStaff =  async(req,res)=>{
     try {
