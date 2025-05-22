@@ -115,7 +115,7 @@ const putOneStudent =  async(req,res)=>{
     try {
        
         const {_id} = req.params
-        const student = await Student.findByIdAndUpdate(_id, req.body)
+        const student = await Student.findByIdAndUpdate({_id:_id}, req.body)
         
         if(!student){
             res.status(404).json("student not found")
