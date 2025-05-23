@@ -134,8 +134,8 @@ const putPushManagementChat = async(req,res)=>{
 
 const deleteOneManagement =  async(req,res)=>{
     try {
-        const {id}=req.params
-        const student = await Management.findByIdAndDelete(id, req.body)
+        const {_id}=req.params
+        const student = await Management.findByIdAndDelete({_id:_id}, req.body)
 
         if(!student){
             res.status(404).json("student not found")
