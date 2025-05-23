@@ -20,7 +20,7 @@ studentRouter.put('/push/:_id/:object', putPushStudent)
 studentRouter.put('/:_id', putOneStudent)
 studentRouter.put('/pull/:_id/:_id2/:object', putPullStudent)
 studentRouter.put('/set/:_id/:object/:index/:key', putSetStudent)
-studentRouter.delete("/delete/:_id", deleteOneStudent)
+studentRouter.delete("/:_id", deleteOneStudent)
 
 managementRouter.post('/verify',managementVerify)
 managementRouter.post('/login',managementLogin)
@@ -31,7 +31,7 @@ managementRouter.put('/:_id', putOneManagement)
 managementRouter.put('/pull/:_id/:_id2/:object', putPullManagement)
 managementRouter.put('/push/:_id/:object', putPushManagementChat)
 managementRouter.put('/push/:_id/:key/:value',putPushManagement)
-managementRouter.delete("/delete/:_id", deleteOneManagement)
+managementRouter.delete("/:_id", deleteOneManagement)
 
 staffRouter.post('/verify',staffVerify)
 staffRouter.post('/login',staffLogin)
@@ -45,7 +45,7 @@ staffRouter.put('/push/:_id/:object2', putPushStaff)
 staffRouter.put('/pull/:_id/:_id2/:object2', putPullStaff)
 staffRouter.put('/push/:_id',putPushStaff)
 staffRouter.put('/set/:_id/:object/:index/:key', putSetStaff)
-staffRouter.delete('/delete/:_id', deleteOneStaff)
+staffRouter.delete('/:_id', deleteOneStaff)
 
 module.exports = {
                  studentRouter,

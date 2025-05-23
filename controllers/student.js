@@ -186,12 +186,12 @@ const putSetStudent = async (req,res) => {
 const deleteOneStudent =  async(req,res)=>{
     try {
         const {_id}=req.params
-        const student = await Student.findByIdAndDelete(_id, req.body)
+        const student = await Student.findByIdAndDelete({_id:_id}, req.body)
 
         if(!student){
             res.status(404).json("student not found")
-        }
-        res.status(200).json(product)
+        }else{
+        res.status(200).json(student)}
     } catch (error) {
        res.status(500).json({message:error.message}) 
     }

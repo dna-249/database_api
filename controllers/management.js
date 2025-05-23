@@ -140,7 +140,7 @@ const deleteOneManagement =  async(req,res)=>{
         if(!student){
             res.status(404).json("student not found")
         }
-        res.status(200).json(product)
+        res.status(200).json(student)
     } catch (error) {
        res.status(500).json({message:error.message}) 
     }
