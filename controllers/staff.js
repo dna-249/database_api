@@ -197,7 +197,7 @@ const putSetStaff = async (req,res) => {
     const {key} = req.params;
     const {index} = req.params;
     const {value} = req.body;
-    const student =  await Staff.findOneAndUpdate({_id:_id},
+    const student =  await Staff.findByIdAndUpdate({_id:_id},
         {$set:
           {
            [`${object}.${index}.${key}`]:value
