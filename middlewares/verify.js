@@ -3,16 +3,17 @@ const {Staff} =require("../model/model")
 const {Management} =require("../model/model")
 const {Student} =require("../model/model")
 exports.staffVerify = async (req,res,next)=>{
-    const {header,name} = req.body
+    const {header,name,password} = req.body
 
     try {
        const token = await header;
-       const staff = await Staff.findOne({name:name})
+       const staff = await Staff.findOne({name:name,password:password})
        if(!token){
         console.log("access denied")
        } 
        const verified = jwt.verify(token, process.env.secret)
        req.name = verified;
+       req.password = verified;
        res.send(res.json(staff))
        next()
     } catch (error) {
@@ -21,16 +22,18 @@ exports.staffVerify = async (req,res,next)=>{
 }
 
 exports.managementVerify = async (req,res,next)=>{
-    const {header,name} = req.body
+    const {header,name,password} = req.body
 
     try {
        const token = await header;
-       const management = await Management.findOne({name:name})
+       const management = await Management.findOne({name:name,password:password})
        if(!token){
         console.log("access denied")
        } 
        const verified = jwt.verify(token, process.env.secret)
        req.name = verified;
+       req.password = verified;
+
        res.send(res.json(management))
        next()
     } catch (error) {
@@ -39,16 +42,17 @@ exports.managementVerify = async (req,res,next)=>{
 }
 
 exports.studentVerify = async (req,res,next)=>{
-    const {header,name} = req.body
+    const {header,name,password} = req.body
 
     try {
        const token = await header;
-       const student = await Student.findOne({name:name})
+       const student = await Student.findOne({name:name,password:password})
        if(!token){
         console.log("access denied")
        } 
        const verified = jwt.verify(token, process.env.secret)
        req.name = verified;
+       req.password = verified;
        res.send(res.json(student))
        next()
     } catch (error) {

@@ -5,11 +5,11 @@ const {Student} =require("../model/model")
 exports.staffLogin = async (req,res,next) =>{
   try {
     const {name, password,user,email} = req.body;
-    const staff = await Staff.findOne({name:name})
+    const staff = await Staff.findOne({name:name,password:password})
     if(!staff) {
         res.status(404).json("not found")
     }
-    const token = jwt.sign({name:staff},process.env.secret)
+    const token = jwt.sign({name:staff.name,password:staff.password},process.env.secret)
     console.log(token)
     res.send(res.json(token))
     console.log(staff)
@@ -22,11 +22,11 @@ exports.staffLogin = async (req,res,next) =>{
 exports.managementLogin = async (req,res,next) =>{
   try {
     const {name, password,user,email} = req.body;
-    const management = await Management.findOne({name:name})
+    const management = await Management.findOne({name:name,password:password})
     if(!management) {
         res.status(404).json("not found")
     }
-    const token = jwt.sign({name:management},process.env.secret)
+    const token = jwt.sign({name:management.name,password:management.password},process.env.secret)
     console.log(token)
     res.send(res.json(token))
     console.log(management)
@@ -39,11 +39,11 @@ exports.managementLogin = async (req,res,next) =>{
 exports.studentLogin = async (req,res,next) =>{
   try {
     const {name, password,user,email} = req.body;
-    const student = await Student.findOne({name:name})
+    const student = await Student.findOne({name:name,password:password})
     if(!student) {
         res.status(404).json("not found")
     }
-    const token = jwt.sign({name:student},process.env.secret)
+    const token = jwt.sign({name:student.name,password:student.password},process.env.secret)
     res.send(res.json(token)) 
     next()
   } catch (error) {
