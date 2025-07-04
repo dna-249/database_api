@@ -1,12 +1,14 @@
 const express = require('express');
 const studentRouter = express.Router()
 const staffRouter = express.Router()
+const teacherRouter = express.Router()
 const managementRouter = express.Router()
 const { getOneStudent,putOneStudent, getAllStudent, postStudent,putSetStudent,putPullStudent, putPushStudent, deleteOneStudent } = require('../controllers/student');
+const { getOneTeacher, putSetTeacher,putOneTeacher, getAllTeacher, postTeacher,putPullTeacher, putPushTeacher, deleteOneTeacher, putOneTeacherClass } = require('../controllers/teacher');
 const { getOneStaff, putSetStaff,putOneStaff, getAllStaff, postStaff,putPullStaff, putPushStaff, deleteOneStaff, putOneStaffClass } = require('../controllers/staff');
 const { getOneManagement,putOneManagement,putPushManagementChat, getAllManagement, postManagement,putPullManagement, putPushManagement, deleteOneManagement } = require('../controllers/management');
-const { staffLogin,managementLogin,studentLogin,managementSignup,staffSignup, studentSignup}=require("../middlewares/middleware")
-const { staffVerify,managementVerify,studentVerify }= require("../middlewares/verify")   
+const { staffLogin,teacherLogin,teacherSignup,managementLogin,studentLogin,managementSignup,staffSignup, studentSignup}=require("../middlewares/middleware")
+const { teacherVerify, staffVerify,managementVerify,studentVerify }= require("../middlewares/verify")   
 
 
 
@@ -47,7 +49,23 @@ staffRouter.put('/push/:_id',putPushStaff)
 staffRouter.put('/set/:_id/:object/:index/:key', putSetStaff)
 staffRouter.delete('/:_id', deleteOneStaff)
 
+teacherRouter.post('/verify',teacherVerify)
+teacherRouter.post('/login',teacherLogin)
+teacherRouter.post('/',teacherSignup, postTeacher)
+teacherRouter.get('/', getAllTeacher)
+teacherRouter.get('/:_id', getOneTeacher)
+teacherRouter.get('/class/:classes', getOneTeacher)
+teacherRouter.put('/:_id', putOneTeacherClass)
+teacherRouter.put('/:_id/:object2', putOneTeacher)
+teacherRouter.put('/push/:_id/:object2', putPushTeacher)
+teacherRouter.put('/pull/:_id/:_id2/:object2', putPullTeacher)
+teacherRouter.put('/push/:_id',putPushTeacher)
+teacherRouter.put('/set/:_id/:object/:index/:key', putSetTeacher)
+teacherRouter.delete('/:_id', deleteOneTeacher)
+
+
 module.exports = {
                  studentRouter,
+                 teacherRouter,
                  managementRouter,
                  staffRouter };

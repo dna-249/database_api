@@ -80,6 +80,110 @@ const student= mongoose.Schema({
         }]
 })
 
+const teacher = mongoose.Schema({
+        key:{type:String},
+        name:{type:String},
+        user:{type:String},
+        class:{type:String},
+        password:{type:String},
+        phone:{type:String},
+        email:{type:String},
+        image:{type:String},
+        session:{type:String},
+        term:{type:String},
+        time:{type:String},
+        type:{type:String},
+        activity:{type:String},
+        managementChat:[{
+                date:{type:String},
+                subject:{type:String},
+                message:{type:String},
+                myId:{type:String}
+        }],
+
+        staffChat:[{
+                 date:{type:String},
+                 subject:{type:String},
+                myId:{type:String},
+                message:{type:String},
+                }],
+                
+        studentChat:[{
+                 date:{type:String},
+                 subject:{type:String},
+                 message:{type:String},
+                 myId:{type:String}
+                }],
+        allChat:[{
+                date:{type:String},
+                subject:{type:String},
+                message:{type:String},
+                myId:{type:String}
+        }],
+        Eng:[{
+              question:{type:String},
+              a:{type:String},
+              b:{type:String},
+              c:{type:String},
+              d:{type:String},
+              ans:{type:String},
+              session:{type:String},
+              term:{type:String},
+              date:{type:String},
+              type:{type:String}
+        }],
+       
+           math:[{
+                question:{type:String},
+                a:{type:String},
+                b:{type:String},
+                c:{type:String},
+                d:{type:String},
+                ans:{type:String},
+                session:{type:String},
+                term:{type:String},
+                date:{type:String},
+                type:{type:String}
+          }],
+           chem:[{
+                question:{type:String},
+                a:{type:String},
+                b:{type:String},
+                c:{type:String},
+                d:{type:String},
+                ans:{type:String},
+                session:{type:String},
+                term:{type:String},
+                date:{type:String},
+                type:{type:String}
+          }],
+           phy:[{
+                question:{type:String},
+                a:{type:String},
+                b:{type:String},
+                c:{type:String},
+                d:{type:String},
+                ans:{type:String},
+                session:{type:String},
+                term:{type:String},
+                date:{type:String},
+                type:{type:String}
+          }],
+           bio:[{
+              question:{type:String},
+              a:{type:String},
+              b:{type:String},
+              c:{type:String},
+              d:{type:String},
+              ans:{type:String},
+              session:{type:String},
+              term:{type:String},
+              date:{type:String},
+              type:{type:String}
+        }]
+})
+
+
 const staff = mongoose.Schema({
         key:{type:String},
         name:{type:String},
@@ -224,10 +328,12 @@ const management = mongoose.Schema({
 })
 
 const Student = mongoose.model("student",student)
+const Teacher = mongoose.model("teacher",teacher)
 const Staff = mongoose.model("staff",staff)
 const Management = mongoose.model("Management",management)
 
 module.exports = {Staff,
                   Student,
+                  Teacher,
                   Management,
                 };

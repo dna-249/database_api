@@ -1,7 +1,26 @@
 const jwt = require("jsonwebtoken")
 const {Staff} =require("../model/model")
+const {Teacher} =require("../model/model")
 const {Management} =require("../model/model")
 const {Student} =require("../model/model")
+exports.teacherLogin = async (req,res,next) =>{
+  try {
+    const {name, password,user,email} = req.body;
+    const teacher = await Teacher.findOne({name:name,password:password})
+    if(!teacher) {
+        res.status(404).json("not found")
+    }
+    const token = jwt.sign({name:teacher.name,password:teacher.password},process.env.secret)
+    console.log(token)
+    res.send(res.json(token))
+    console.log(teacher)
+    next()
+  } catch (error) {
+   console.log(error) 
+  }
+}
+
+
 exports.staffLogin = async (req,res,next) =>{
   try {
     const {name, password,user,email} = req.body;
@@ -58,6 +77,21 @@ exports.studentSignup = async (req,res,next) =>{
       res.status(404).json("not found")
   } else{
     jwt.sign({[`admissions.key`]:admission}, process.env.secret); 
+  next()}
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+
+exports.teacherSignup = async (req,res,next) =>{
+  try {
+    const {key} = req.body
+    const admission = await Management.findOne({[`teacher.key`]:key})
+    if(!admission) {
+      res.status(404).json("not found")
+  } else{
+    jwt.sign({[`teacher.key`]:admission}, process.env.secret); 
   next()}
   } catch (error) {
     console.log(error)

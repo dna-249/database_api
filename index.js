@@ -4,7 +4,7 @@ const Port = process.env.PORT || 3000
 const app = express()
 const cors = require("cors");
 const mongoose = require("mongoose")
-const {studentRouter,managementRouter, staffRouter} = require("./router/router")
+const {studentRouter,managementRouter,teacherRouter, staffRouter} = require("./router/router")
 
 const corsConfig = {
     origin : ["https://cloud-database.vercel.app"],
@@ -32,6 +32,7 @@ app.get("/",(req,res)=>{
 
 app.use("/student", studentRouter)
 app.use("/staff", staffRouter)
+app.use("/teacher", teacherRouter)
 app.use("/management", managementRouter)
 
 

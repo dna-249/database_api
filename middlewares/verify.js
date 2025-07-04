@@ -1,7 +1,27 @@
 const jwt = require("jsonwebtoken")
 const {Staff} =require("../model/model")
+const {Teacher} =require("../model/model")
 const {Management} =require("../model/model")
 const {Student} =require("../model/model")
+exports.teacherVerify = async (req,res,next)=>{
+    const {header,name,password} = req.body
+
+    try {
+       const token = await header;
+       const teacher = await Teacher.findOne({name:name,password:password})
+       if(!token){
+        console.log("access denied")
+       } 
+       const verified = jwt.verify(token, process.env.secret)
+       req.name = verified;
+       req.password = verified;
+       res.send(res.json(teacher))
+       next()
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 exports.staffVerify = async (req,res,next)=>{
     const {header,name,password} = req.body
 
@@ -20,6 +40,7 @@ exports.staffVerify = async (req,res,next)=>{
         console.log(error)
     }
 }
+
 
 exports.managementVerify = async (req,res,next)=>{
     const {header,name,password} = req.body
