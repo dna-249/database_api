@@ -17,7 +17,8 @@ const postTeacher = async(req,res) => {
         password:password,
         phone:phone,
         email:email,
-        class:classes,
+       class:[{class:classes}],
+        subject:[{subject:subject}],
         image:image,
         session:session,
         term:term,
@@ -143,8 +144,12 @@ const getOneTeacher =  async(req,res)=>{
 
 const putOneTeacherClass =  async(req,res)=>{
     try {
-        const {_id}=req.params   
-        const student = await Teacher.findByIdAndUpdate({_id:_id}, req.body)
+        const {_id}=req.params
+        const {key}=req.params
+        const {value}=req.params
+        const {classes}= req.body   
+        const student = await Teacher.findByIdAndUpdate({_id:_id},
+         { $push:{[`${key}`]:{[`${value}`]:classes}}})
         
         if(!student){
             res.status(404).json("student not found")
