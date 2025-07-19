@@ -301,6 +301,7 @@ const management = mongoose.Schema({
         staff:[{  key:{type:String}  }],
         teacher:[{  key:{type:String}  }],
         classes:[{  key:{type:String}  }],
+        subject:[{  key:{type:String}}],
         allChat:[{
                 date:{type:String},
                 subject:{type:String},

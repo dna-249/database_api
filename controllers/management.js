@@ -16,6 +16,7 @@ const postManagement = async(req,res) => {
                                 management:[{key:key}],
                                 staff:[{key:key}],
                                 classes:[{key:key}],
+                                subject:[{key:key}],
 
                                 managementChat:[{
                                     date:date,
