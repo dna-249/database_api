@@ -11,7 +11,8 @@ const transporter = nodeMailer.createTransport({
 
  
 
-const emails =async(from,to,subject,html)=>{
+const emails =async(req,res)=>{
+    const {from,to,subject,html} = req.body
     try {
         await transporter.sendMail({
                     from:from,
@@ -19,7 +20,7 @@ const emails =async(from,to,subject,html)=>{
                     subject:subject,
                     html:html
         })
-        console.log("sent successfully") 
+        res.json("sent successfully") 
     } catch (error) {
         console.log(error)
     }
