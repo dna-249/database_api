@@ -6,6 +6,7 @@ const cors = require("cors");
 const mongoose = require("mongoose")
 const {studentRouter,managementRouter,teacherRouter, staffRouter} = require("./router/router")
 
+
 const corsConfig = {
     origin : ["https://cloud-database.vercel.app"],
     credential : true,
@@ -38,6 +39,7 @@ app.use("/management", managementRouter)
 
 
 app.listen(Port, ()=>{
+   
     console.log("server is Running")
     
 })
