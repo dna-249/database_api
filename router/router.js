@@ -13,7 +13,7 @@ const { teacherVerify, staffVerify,managementVerify,studentVerify }= require("..
 const emails = require("./email/email");
 
 
-emailRouter.post('/email',emails)
+emailRouter.post('/',emails)
 studentRouter.post('/verify',studentVerify)
 studentRouter.post('/login',studentLogin)
 studentRouter.post('/',studentSignup, postStudent)
