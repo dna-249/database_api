@@ -4,7 +4,7 @@ const Port = process.env.PORT || 3000
 const app = express()
 const cors = require("cors");
 const mongoose = require("mongoose")
-const {studentRouter,managementRouter,teacherRouter, staffRouter} = require("./router/router")
+const {emailRouter,studentRouter,managementRouter,teacherRouter, staffRouter} = require("./router/router")
 
 
 const corsConfig = {
@@ -35,6 +35,7 @@ app.use("/student", studentRouter)
 app.use("/staff", staffRouter)
 app.use("/teacher", teacherRouter)
 app.use("/management", managementRouter)
+app.use("/email", emailRouter)
 
 
 
