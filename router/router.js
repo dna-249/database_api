@@ -10,10 +10,10 @@ const { getOneStaff, putSetStaff,putOneStaff, getAllStaff, postStaff,putPullStaf
 const { getOneManagement,putOneManagement,putPushManagementChat, getAllManagement, postManagement,putPullManagement, putPushManagement, deleteOneManagement } = require('../controllers/management');
 const { staffLogin,teacherLogin,teacherSignup,managementLogin,studentLogin,managementSignup,staffSignup, studentSignup}=require("../middlewares/middleware")
 const { teacherVerify, staffVerify,managementVerify,studentVerify }= require("../middlewares/verify")   
-const emails = require("./email/email");
+const{ emails} = require("../email/email")
 
 
-emailRouter.post('/',emails)
+emailRouter.post('/', emails)
 studentRouter.post('/verify',studentVerify)
 studentRouter.post('/login',studentLogin)
 studentRouter.post('/',studentSignup, postStudent)
@@ -69,4 +69,5 @@ module.exports = {
                  studentRouter,
                  teacherRouter,
                  managementRouter,
-                 staffRouter };
+                 staffRouter,
+                 emailRouter };

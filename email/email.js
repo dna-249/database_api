@@ -1,6 +1,11 @@
 const nodeMailer = require("nodemailer")
 
-const transporter = nodeMailer.createTransport({
+
+
+ 
+
+ const emails =async(req,res)=>{
+    const transporter = nodeMailer.createTransport({
     service:"gmail",
     secure:true,
     auth:{
@@ -8,10 +13,6 @@ const transporter = nodeMailer.createTransport({
         pass:"pjke mmhi qtmr qgmg"
     }
 })
-
- 
-
-const emails =async(req,res)=>{
     const {from,to,subject,html} = req.body
     try {
         await transporter.sendMail({
@@ -26,4 +27,7 @@ const emails =async(req,res)=>{
     }
    
 }
-module.exports = emails
+ 
+module.exports = {
+    emails
+}
