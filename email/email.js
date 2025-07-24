@@ -13,7 +13,8 @@ const nodeMailer = require("nodemailer")
         pass:"pjke mmhi qtmr qgmg"
     }
 })
-    const {from,to,name,msg,phone} = req.body
+    const {to,name,msg,phone} = req.body
+    const from = "danamonuraalhaji@gmail.com"
     try {
         await transporter.sendMail({
         from:from,
@@ -38,7 +39,7 @@ const nodeMailer = require("nodemailer")
                     </head>
                         <body>
                             <div class="center>
-                                <h3>${name}</h3>
+                                <h3> ${name} </h3>
                                 <p>${msg}</p>
                                 <p> you can contact me through <span style='fontWeight:"bold",color:"green">
                                  ${phone} </span></P>
