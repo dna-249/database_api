@@ -48,39 +48,7 @@ const nodeMailer = require("nodemailer")
                         </body>
                     </html>`
         })
-         await transporter.sendMail({
-        from:to,
-        to:from,
-        html:`<html lang="en">
-                    <head>
-                        <meta charset="UTF-8">
-                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                        <title>Erudite Online Academy</title>
-                        <style>
-                          .center{
-                              display:grid;
-                              margin:auto;
-                              align-items:center;
-                              text-align:center;
-                              background:alice-blue;
-                              align-content:center;
-                              justify-content:center;
-                              justify-items:center;
-                          }
-                        </style>
-                    </head>
-                        <body>
-                            <div class="center>
-                               ${pic}
-                                <h3>Welcome to Erudite</h3>
-                                <p>We are pleased to have you here!</p>
-                                <p>We will get bact to you soon.</p>
-                                <p>Thank you for contacting Erudite.</p>
-                                
-                            </div>
-                        </body>
-                    </html>`
-        })
+
         res.json("sent successfully") 
     } catch (error) {
         console.log(error)
