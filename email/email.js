@@ -18,8 +18,8 @@ const nodeMailer = require("nodemailer")
     const pic = `<img src="/bg_eoa.jpg" alt="" width={200} height={180}/>`
     try {
         await transporter.sendMail({
-        from:from,
-        to:to,
+        from:to,
+        to:from,
         html:`<html lang="en">
                     <head>
                         <meta charset="UTF-8">
