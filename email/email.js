@@ -15,8 +15,7 @@ const nodeMailer = require("nodemailer")
 })
     const {to,name,msg,phone} = req.body
     const from = "eruditeacademyonline@gmail.com"
-    const pic = `<img src="/bg_eoa.jpg" alt="" width={200} height={180}/>`
-    try {
+     try {
         await transporter.sendMail({
         from:to,
         to:from,
@@ -26,11 +25,13 @@ const nodeMailer = require("nodemailer")
                     </head>
                         <body>
                             <div> 
-                                ${pic}
+                               <img src="bg_eoa.jpg" alt="" width={200} height={180}/>
+   
                                 <h3> ${name} </h3>
                                 <p>${msg}</p>
-                                <p> you can contact me through <span style='fontWeight:"bold",color:"green">
-                                 ${phone} </span></P>
+                                <p> you can contact me through 
+                                <span style='fontWeight:"bold",color:"green">
+                                 ${phone} </span></p>
                             </div>
                         </body>
                     </html>`
