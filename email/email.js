@@ -22,24 +22,11 @@ const nodeMailer = require("nodemailer")
         to:from,
         html:`<html lang="en">
                     <head>
-                        <meta charset="UTF-8">
-                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                        <title>Erudite Online Academy</title>
-                        <style>
-                          .center{
-                              display:grid;
-                              margin:auto;
-                              align-items:center;
-                              text-align:center;
-                              background:alice-blue;
-                              align-content:center;
-                              justify-content:center;
-                              justify-items:center;
-                          }
-                        </style>
+                              <title>Erudite Online Academy</title>
                     </head>
                         <body>
-                            <div class="center>
+                            <div> 
+                                ${pic}
                                 <h3> ${name} </h3>
                                 <p>${msg}</p>
                                 <p> you can contact me through <span style='fontWeight:"bold",color:"green">
