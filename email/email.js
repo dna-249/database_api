@@ -15,7 +15,7 @@ const nodeMailer = require("nodemailer")
 })
     const {to,name,msg,phone} = req.body
     const from = "eruditeacademyonline@gmail.com"
-    const pic =  <img src="/bg_eoa.jpg" alt="" width={200} height={180}/>
+    const pic = `<img src="/bg_eoa.jpg" alt="" width={200} height={180}/>`
     try {
         await transporter.sendMail({
         from:from,
