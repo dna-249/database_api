@@ -9,12 +9,13 @@ const nodeMailer = require("nodemailer")
     service:"gmail",
     secure:true,
     auth:{
-        user:"danamonuraalhaji@gmail.com",
-        pass:"pjke mmhi qtmr qgmg"
+        user:"eruditeacademyonline@gmail.com",
+        pass:"mpns xdfj ubgi ycmo"
     }
 })
     const {to,name,msg,phone} = req.body
-    const from = "danamonuraalhaji@gmail.com"
+    const from = "eruditeacademyonline@gmail.com"
+    const pic =  <img src="/bg_eoa.jpg" alt="" width={200} height={180}/>
     try {
         await transporter.sendMail({
         from:from,
@@ -70,7 +71,7 @@ const nodeMailer = require("nodemailer")
                     </head>
                         <body>
                             <div class="center>
-                                <img src="bg_eoa.jpg" alt="" width={200},height={180}/>
+                               ${pic}
                                 <h3>Welcome to Erudite</h3>
                                 <p>We are pleased to have you here!</p>
                                 <p>We will get bact to you soon.</p>
