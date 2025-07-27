@@ -1,8 +1,5 @@
 const nodeMailer = require("nodemailer")
-
-
-
- 
+const ejs  = require("ejs")
 
  const emails =async(req,res)=>{
     const transporter = nodeMailer.createTransport({
@@ -13,28 +10,15 @@ const nodeMailer = require("nodemailer")
         pass:"mpns xdfj ubgi ycmo"
     }
 })
+    
     const {to,name,msg,phone} = req.body
     const from = "eruditeacademyonline@gmail.com"
+    const html = ejs.renderFile(_dirname,"/template/email",{msg:msg,name:name,phone:phone})
      try {
         await transporter.sendMail({
-        from:to,
-        to:from,
-        html:`<html lang="en">
-                    <head>
-                              <title>Erudite Online Academy</title>
-                    </head>
-                        <body>
-                            <div> 
-                               <img src="bg_eoa.jpg" alt="" width={200} height={180}/>
-   
-                                <h3> ${name} </h3>
-                                <p>${msg}</p>
-                                <p> you can contact me through 
-                                <span style='fontWeight:"bold",color:"green">
-                                 ${phone} </span></p>
-                            </div>
-                        </body>
-                    </html>`
+        from:from,
+        to:to,
+        html:html
         })
 
         res.json("sent successfully") 
