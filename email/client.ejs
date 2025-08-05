@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .green{
+            display: grid;
+            background-color: green;
+            color: white;
+            text-align: center;
+            width: fit-content;
+            padding: 5px;
+          margin: auto;
+          border-radius: 5px;
+        }
+        .center{
+            display:grid;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin: auto;
+            align-content: center;
+            justify-items: center;
+        }
+        .img{
+            width: 150px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="center"> 
+        <div><img src="bg_eoa.jpg" class="img" alt=""  /></div>
+
+        <h3 class="green"> <%= name %> </h3>
+        <p>Thank you contacting Erudite <br/> We will get to you soon!</p>
+        <p> you can contact me through </p>
+        <h3> <%= phone %> </h3>
+    </div>
+</body>
+</html>

@@ -8,7 +8,7 @@ const {emailRouter,studentRouter,managementRouter,teacherRouter, staffRouter} = 
 
 
 const corsConfig = {
-    origin : ["https://cloud-database.vercel.app"],
+    origin : ["*"],
     credential : true,
     methods : ["GET","POST","PUT","DELETE"],
     headers:["*"]
