@@ -27,8 +27,8 @@ const ejs        = require("ejs")
         const html2 =  await ejs.renderFile(__dirname +"/client"+".ejs",{name:name,msg:msg,phone:phone},{async:true})
   
         await transporter.sendMail({
-        to:"danamonuraalhaji@gmail.com",
-        subject:name,
+        to:to,
+        subject:"Erudite Online Academy",
         html:html2
         })
 
