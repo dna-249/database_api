@@ -8,7 +8,7 @@ const {emailRouter,studentRouter,managementRouter,teacherRouter, staffRouter} = 
 
 
 const corsConfig = {
-    origin : ["*"],
+    origin : ["https://eruditeonlineacademy.vercel.app"],
     credential : true,
     methods : ["GET","POST","PUT","DELETE"],
     headers:["*"]
