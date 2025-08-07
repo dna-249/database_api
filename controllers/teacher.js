@@ -5,8 +5,9 @@ const{ Teacher} = require("../model/model")
 
 const postTeacher = async(req,res) => {
     const {name,password,email,classes,user,phone,key,message,subject,id,
-          question,ans, a,b,c,d,session,term,date,type,image,time,activity
-    } = req.body
+          question,ans, a,b,c,d,session,term,date,type,image,time,activity,
+          age,gender,address
+        } = req.body
     
      await Teacher.create({
 
@@ -17,6 +18,9 @@ const postTeacher = async(req,res) => {
         password:password,
         phone:phone,
         email:email,
+        age:age,
+        gender:gender,
+        address:address,
        class:[{class:classes}],
         subject:[{subject:subject}],
         image:image,

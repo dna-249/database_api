@@ -5,7 +5,8 @@ const{ Staff} = require("../model/model")
 
 const postStaff = async(req,res) => {
     const {name,password,email,classes,user,phone,key,message,subject,id,
-          question,ans, a,b,c,d,session,term,date,type,image,time,activity
+          question,ans, a,b,c,d,session,term,date,type,image,time,activity,
+          age,gender,address
     } = req.body
     
      await Staff.create({
@@ -23,6 +24,9 @@ const postStaff = async(req,res) => {
         term:term,
         time:time,
         type:type,
+        age:age,
+        gender:gender,
+        address:address,
         activity:activity,
         allChat:[{
             date:date,
