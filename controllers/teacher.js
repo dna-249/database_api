@@ -167,7 +167,7 @@ const putOneTeacherClass =  async(req,res)=>{
 }
 
 
-const putOneTeacher =  async(req,res)=>{
+const putOneTeacher =  async(req,res)=>{ 
     try {
         const {_id}=req.params   
          const {object2}=req.params
