@@ -3,7 +3,7 @@ const { Management } = require("../model/model")
 
 
 const postManagement = async(req,res) => {
-    const {name,phone,password,address,age,gender,email,user,adm,key,image,date,subject,message,myId} = req.body
+    const {name,phone,password,address,link,linkname,age,gender,email,user,adm,key,image,date,subject,message,myId} = req.body
      await Management.create({
                                 key:key,
                                 name:name,
@@ -20,6 +20,7 @@ const postManagement = async(req,res) => {
                                 staff:[{key:key}],
                                 classes:[{key:key}],
                                 subject:[{key:key}],
+                                link:[{link:link,name:linkname}],
 
                                 managementChat:[{
                                     date:date,
@@ -103,14 +104,25 @@ const putPushManagement = async (req,res) => {
     const {_id} = req.params;
     const {key} = req.params;
     const {value} = req.params;
-    const {adm} = req.body;
+    const {adm ,linkname} = req.body;
+    if(linkname){
+       await Management.findOneAndUpdate({_id},
+        {$push:
+            {[`${key}`]:{link:adm,
+                        name:linkname}}
+        }
+      )
+                    console.log(res.json())
+    }else{
+
+    
       await Management.findOneAndUpdate({_id},
         {$push:
             {[`${key}`]:{[`${value}`]:adm}}
         }
       )
                     console.log(res.json())
-                    
+    }
 }
  
 const putPushManagementChat = async(req,res)=>{

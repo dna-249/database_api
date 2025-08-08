@@ -99,6 +99,7 @@ const teacher = mongoose.Schema({
         type:{type:String},
         activity:{type:String},
         age:{type:String},
+        linc:{type:String},
         gender:{type:String},
         address:{type:String},
         managementChat:[{
@@ -313,6 +314,7 @@ const management = mongoose.Schema({
         staff:[{  key:{type:String}  }],
         teacher:[{  key:{type:String}  }],
         classes:[{  key:{type:String}  }],
+        link:[{  link:{type:String},name:{type:String}  }],
         subject:[{  key:{type:String}}],
         allChat:[{
                 date:{type:String},
