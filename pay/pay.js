@@ -1,8 +1,11 @@
 const https = require('https')
 
-const params = JSON.stringify({
-  "email": "customer@email.com",
-  "amount": "20000"
+const payment = async(req ,res)=>{
+  const {email,amount}  = req.body
+  
+  const params = JSON.stringify({
+  "email": email,
+  "amount": amount
 })
 
 const options = {
@@ -11,24 +14,27 @@ const options = {
   path: '/transaction/initialize',
   method: 'POST',
   headers: {
-    Authorization: 'Bearer SECRET_KEY',
+    Authorization: `Bearer ${process.env.nur}`,
     'Content-Type': 'application/json'
   }
 }
 
-const req = https.request(options, res => {
+const reqPay = await https.request(options, resPay => {
   let data = ''
-
-  res.on('data', (chunk) => {
+ 
+  resPay.on('data', (chunk) => {
     data += chunk
   });
 
-  res.on('end', () => {
+  resPay.on('end', () => {
     console.log(JSON.parse(data))
   })
 }).on('error', error => {
   console.error(error)
 })
 
-req.write(params)
-req.end()
+reqPay.write(params)
+reqPay.end()
+}
+
+module.exports = {payment}

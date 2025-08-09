@@ -1,10 +1,12 @@
 require("dotenv").config()
+
 const express  = require("express");
 const Port = process.env.PORT || 3000
 const app = express()
 const cors = require("cors");
 const mongoose = require("mongoose")
-const {emailRouter,studentRouter,managementRouter,teacherRouter, staffRouter} = require("./router/router")
+const {emailRouter,paymentRouter,studentRouter,managementRouter,teacherRouter, staffRouter} = require("./router/router");
+
 
 
 const corsConfig = {
@@ -23,7 +25,7 @@ app.use(express.urlencoded({
 
 mongoose.connect(process.env.secret).
 then(()=> console.log("connected to database")).
-catch(err => console.log(err))
+catch(err => console.log("not connected"))
 
 
 app.get("/",(req,res)=>{
@@ -36,11 +38,11 @@ app.use("/staff", staffRouter)
 app.use("/teacher", teacherRouter)
 app.use("/management", managementRouter)
 app.use("/email", emailRouter)
+app.use("/pay", paymentRouter)
 
 
 
 app.listen(Port, ()=>{
-   
     console.log("server is Running")
     
 })

@@ -4,16 +4,20 @@ const staffRouter = express.Router()
 const teacherRouter = express.Router()
 const managementRouter = express.Router()
 const emailRouter = express.Router()
+const paymentRouter = express.Router()
 const { getOneStudent,putOneStudent, getAllStudent, postStudent,putSetStudent,putPullStudent, putPushStudent, deleteOneStudent } = require('../controllers/student');
 const { getOneTeacher, putSetTeacher,putOneTeacher, getAllTeacher, postTeacher,putPullTeacher, putPushTeacher, deleteOneTeacher, putOneTeacherClass } = require('../controllers/teacher');
 const { getOneStaff, putSetStaff,putOneStaff, getAllStaff, postStaff,putPullStaff, putPushStaff, deleteOneStaff, putOneStaffClass } = require('../controllers/staff');
 const { getOneManagement,putOneManagement,putPushManagementChat, getAllManagement, postManagement,putPullManagement, putPushManagement, deleteOneManagement } = require('../controllers/management');
 const { staffLogin,teacherLogin,teacherSignup,managementLogin,studentLogin,managementSignup,staffSignup, studentSignup}=require("../middlewares/middleware")
 const { teacherVerify, staffVerify,managementVerify,studentVerify }= require("../middlewares/verify")   
-const{ emails} = require("../email/email")
+const{ emails} = require("../email/email");
+const { payment } = require('../pay/pay');
+
 
 
 emailRouter.post('/', emails)
+paymentRouter.post('/', payment)
 studentRouter.post('/verify',studentVerify)
 studentRouter.post('/login',studentLogin)
 studentRouter.post('/',studentSignup, postStudent)
@@ -71,4 +75,5 @@ module.exports = {
                  teacherRouter,
                  managementRouter,
                  staffRouter,
+                 paymentRouter,
                  emailRouter };
