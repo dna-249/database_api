@@ -1,7 +1,7 @@
 const https = require('https')
 
 const payment = async(req ,res)=>{
-  const {email,amount}  = req.body
+  
   
   const params = JSON.stringify({
   "email": "danamonuraalhaji@gmail.com",
