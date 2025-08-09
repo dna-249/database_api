@@ -4,8 +4,8 @@ const payment = async(req ,res)=>{
   const {email,amount}  = req.body
   
   const params = JSON.stringify({
-  "email": email,
-  "amount": amount
+  "email": "danamonuraalhaji@gmail.com",
+  "amount":5000
 })
 
 const options = {
@@ -14,7 +14,7 @@ const options = {
   path: '/transaction/initialize',
   method: 'POST',
   headers: {
-    Authorization: `Bearer ${process.env.SECRET_KEYS}`,
+    Authorization: `Bearer ${process.env.SECRET_KEY}`,
     'Content-Type': 'application/json'
   }
 }
