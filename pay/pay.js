@@ -21,7 +21,7 @@ const options = {
 
 const reqPay = await https.request(options, resPay => {
   let data = ''
-  res.json(reqPay)
+  res.json(reqPay.data)
   resPay.on('data', (chunk) => {
     data += chunk
   });
