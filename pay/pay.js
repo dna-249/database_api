@@ -14,7 +14,7 @@ const options = {
   path: '/transaction/initialize',
   method: 'POST',
   headers: {
-    Authorization: `Bearer ${process.env.nur}`,
+    Authorization: `Bearer ${process.env.SECRET_KEYS}`,
     'Content-Type': 'application/json'
   }
 }
