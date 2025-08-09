@@ -1,11 +1,11 @@
 const https = require('https')
 
 const payment = async(req ,res)=>{
-  
+
   
   const params = JSON.stringify({
-  "email": "danamonuraalhaji@gmail.com",
-  "amount":5000
+  "email": "customer@email.com",
+  "amount": "20000"
 })
 
 const options = {
@@ -14,14 +14,14 @@ const options = {
   path: '/transaction/initialize',
   method: 'POST',
   headers: {
-    Authorization: `Bearer ${process.env.SECRET_KEY}`,
+    Authorization: 'Bearer sk_test_175e128554712fc5604861305f974a8a564a5917',
     'Content-Type': 'application/json'
   }
 }
 
 const reqPay = await https.request(options, resPay => {
   let data = ''
-  console.log(resPay)
+ console.log(resPay)
   resPay.on('data', (chunk) => {
     data += chunk
   });
