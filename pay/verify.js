@@ -1,19 +1,13 @@
 const https = require('https')
 
-const payment =(q,r)=>{
-  const {email,amount} = q.body
-  console.log("is working")
-  const params = JSON.stringify({
-  "email": email,
-  "amount": amount *100,
-  "currency":"NGN"
-})
+const verify =(q,r)=>{
+  const {ref} = q.body
 
 const options = {
   hostname: 'api.paystack.co',
   port: 443,
-  path: '/transaction/initialize',
-  method: 'POST',
+  path: `/transaction/verify/${ref}`,
+  method: 'GET',
   headers: {
     Authorization: `Bearer ${process.env.SECRET_KEYS}`,
     'Content-Type': 'application/json'
@@ -34,8 +28,7 @@ const req = https.request(options, res => {
   console.error(error)
 })
 
-req.write(params)
-req.end()
+
 }
 
-module.exports = {payment}
+module.exports = {verify}
