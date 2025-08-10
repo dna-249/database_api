@@ -6,7 +6,7 @@ const payment =(q,r)=>{
   const params = JSON.stringify({
   "email": email,
   "amount": amount *100,
-  "currency":"NGN"
+  
 })
 
 const options = {
