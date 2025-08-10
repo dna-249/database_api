@@ -28,7 +28,8 @@ const req = https.request(options, res => {
   console.error(error)
 })
 
-
+req.write()
+req.end()
 }
 
 module.exports = {verify}
