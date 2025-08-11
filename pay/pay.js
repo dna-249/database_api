@@ -3,10 +3,10 @@ const {message } = require("../email/email")
 
 const payment =(q,r)=>{
   
-  
+  const {email,amount} = q.body
   const params = JSON.stringify({
-  "email": "danamonuraalhaji@gmail.com",
-  "amount": 50000 *100,
+  "email": email,
+  "amount": amount *100,
   
 })
 
