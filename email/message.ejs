@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .green{
+            display: grid;
+            background-color: green;
+            color: white;
+            text-align: center;
+            width: fit-content;
+            padding: 5px;
+            margin: auto;
+            border-radius: 5px;
+        }
+        .center{
+            display:grid;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin: auto;
+            align-content: center;
+            justify-items: center;
+        }
+        .img{
+            width: 200px;
+            height: 180px;
+        }
+    </style>
+</head>
+<body>
+    <div class="center"> 
+        <div><img src="https://res.cloudinary.com/dukgqyyek/image/upload/v1754375534/taiuwdnictqnagxxakid.jpg" class="img" alt=""  /></div>
+
+        <h3 class="green"> <%= name %> </h3>
+        <p>Congratulations <br/> You have been successfully enrolled into the program!</p>
+        <p>Now you can proceed by using your<span style="font-size: larger;font-weight:bolder"> <%= phone %></span> as your key to create your account.</p>
+        <p> You can also join our Whatsapp link below </p>
+        <h3 class="green"> <a href="https://chat.whatsapp.com/FWpCewRttie467ATLIFTLi?mode=ac_t">Join Us Here</a> </h3>
+    </div>
+</body>
+</html>

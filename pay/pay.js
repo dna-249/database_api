@@ -1,4 +1,5 @@
 const https = require('https')
+const {message } = require("../email/email")
 
 const payment =(q,r)=>{
   
@@ -39,7 +40,7 @@ req.end()
 }
 
 const verify =(q,r)=>{
-  const {ref} = q.body
+  const {ref,name,phone} = q.body
 const options = {
   hostname: 'api.paystack.co',
   port: 443,
@@ -59,7 +60,14 @@ const options = {
   });
 
   res.on('end', () => {
-    r.json(JSON.parse(data))
+    const response = JSON.parse(data) 
+    if(response.data.status === 'success') {
+       message(name,phone)
+       r.json(response.data)
+    } else {
+      return r.json(response.data)
+    }
+   
   })
 }).on('error', error => {
   console.error(error)
