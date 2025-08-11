@@ -5,7 +5,7 @@ const Port = process.env.PORT || 3000
 const app = express()
 const cors = require("cors");
 const mongoose = require("mongoose")
-const {emailRouter,verifyRouter,paymentRouter,studentRouter,managementRouter,teacherRouter, staffRouter} = require("./router/router");
+const {emailRouter,paymentRouter,studentRouter,managementRouter,teacherRouter, staffRouter} = require("./router/router");
 
 
 
@@ -39,7 +39,7 @@ app.use("/teacher", teacherRouter)
 app.use("/management", managementRouter)
 app.use("/email", emailRouter)
 app.use("/pay", paymentRouter)
-app.use("/verify", verifyRouter)
+
 
 
 
