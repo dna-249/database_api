@@ -40,7 +40,7 @@ req.end()
 }
 
 const verify =(q,r)=>{
-  const {ref,name,phone} = q.body
+  const {ref,name,phone,to} = q.body
 const options = {
   hostname: 'api.paystack.co',
   port: 443,
@@ -62,7 +62,7 @@ const options = {
   res.on('end', () => {
     const response = JSON.parse(data) 
     if(response.data.status === 'success') {
-       message(name,phone)
+       message(name,phone,to)
        r.json(response.data)
     } else {
       return r.json(response.data)

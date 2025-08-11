@@ -38,7 +38,7 @@ const ejs        = require("ejs")
     }
    
 }
- const message =async(req,res)=>{
+ const message =async(to,name,phone)=>{
     const transporter = nodeMailer.createTransport({
     service:"gmail",
     secure:true,
@@ -48,16 +48,16 @@ const ejs        = require("ejs")
     }
 })
     
-    const {to,name,msg,phone} = req.body
+    
      try {
-      const html =  await ejs.renderFile(__dirname +"/message"+".ejs",{name:name,msg:msg,phone:phone},{async:true})
+      const html =  await ejs.renderFile(__dirname +"/message"+".ejs",{name:name,phone:phone},{async:true})
   
         await transporter.sendMail({
         to:"eruditeacademyonline@gmail.com",
         subject:name,
         html:html
         })
-        const html2 =  await ejs.renderFile(__dirname +"/message"+".ejs",{name:name,msg:msg,phone:phone},{async:true})
+        const html2 =  await ejs.renderFile(__dirname +"/message"+".ejs",{name:name,phone:phone},{async:true})
   
         await transporter.sendMail({
         to:to,
@@ -65,7 +65,7 @@ const ejs        = require("ejs")
         html:html2
         })
 
-        res.json("sent successfully") 
+        console.log("sent successfully") 
     } catch (error) {
         console.log(error)
     }
