@@ -1,6 +1,10 @@
 const mongoose = require("mongoose")
 
-
+const payer = mongoose.Schema({
+        email:{type:String},
+        name:{type:String},
+        phone:{type:String}
+})
 
 const student= mongoose.Schema({
 
@@ -347,10 +351,12 @@ const management = mongoose.Schema({
 const Student = mongoose.model("student",student)
 const Teacher = mongoose.model("teacher",teacher)
 const Staff = mongoose.model("staff",staff)
+const Payer = mongoose.model("payer",payer)
 const Management = mongoose.model("Management",management)
 
 module.exports = {Staff,
                   Student,
                   Teacher,
+                  Payer,
                   Management,
                 };
