@@ -63,6 +63,7 @@ const options = {
     const response = JSON.parse(data) 
     if(response.data.status === 'success') {
        message(name,phone,to)
+      
        r.json(response.data)
     } else {
       return r.json(response.data)
