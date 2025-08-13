@@ -40,16 +40,14 @@ req.end()
 }
 
 const verify = async(q,r)=>{
-  const {name,phone,email} = q.body
-  await Payer.create({
-    name:name,
-    phone:phone,
-    email:email
-  })
-  console.log("created")
-       message(name,phone,email)
-
-       console.log("hello world")
+  const {data} = q.bodY
+  if (data.succes === "success") {
+  const name = await Payer.find({})
+       message(name[0].email,name[0].name,name[0].phone)
+} else{
+       message("danamonuraalhaji@gmail.com","ABANDONED ","not successfull is abandoned")
+}
+  r.json(200)
 }
 
 
