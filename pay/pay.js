@@ -40,8 +40,8 @@ req.end()
 }
 
 const verify = async(q,r)=>{
-  const {data} = q.bodY
-  if (data.succes === "success") {
+  const {data} = q.body
+  if (data?.success === "success") {
   const name = await Payer.find({})
        message(name[0].email,name[0].name,name[0].phone)
 } else{
