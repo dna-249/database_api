@@ -40,11 +40,11 @@ req.end()
 }
 
 const verify = async(q,r)=>{
-  const {data} = q.body
-  if (data?.success === "success") {
-  const name = await Payer.find({})
+  const data = q.body
+  if (data?.data?.status !== "success") {
+      const name = await Payer.find({})
        message(name[0].email,name[0].name,name[0].phone)
-} else{
+      } else{
        message("danamonuraalhaji@gmail.com","ABANDONED ","not successfull is abandoned")
 }
   r.json(200)
