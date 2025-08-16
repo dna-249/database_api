@@ -19,7 +19,7 @@ const { payer } = require('../controllers/payer');
 
 
 emailRouter.post('/', emails)
-paymentRouter.put('/verify',verify)
+paymentRouter.post('/verify',verify)
 paymentRouter.get('/', payment)
 paymentRouter.put('/put', payer)
 studentRouter.post('/verify',studentVerify)
