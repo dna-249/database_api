@@ -3,7 +3,7 @@ const {message } = require("../email/email")
 const {Payer} = require("../model/model")
 const payment =(q,r)=>{
   
-  
+  const {email,amount} = q.body
   const params = JSON.stringify({
   "email": email,
   "amount": amount *100,
