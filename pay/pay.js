@@ -43,7 +43,13 @@ req.end()
 
 const verify = async(q,r)=>{
 const {email,ref,adm} = q.body
- message(email,"Annur Nura",adm)
+ const name = await Payer.findOne({email:email})
+          await Management.findOneAndUpdate({_id:"681be0a2ab9060aece76aabd"},
+        {$push:
+            {[`admissions`]:{[`key`]:adm}}
+        })
+       await message(email,name.name,adm)
+     
   r.json("mail sent")
 }
 
