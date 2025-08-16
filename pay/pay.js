@@ -75,9 +75,9 @@ const req = https.get(options, res => {
       )
 
        message(email,name.name,adm)
-       r.json("verified successfully")
+       r.send("verified successfully")
       } else{
-      r.json("unsuccessful payment")
+      r.send("unsuccessful payment")
 }
   })
 }).on('error', error => {
