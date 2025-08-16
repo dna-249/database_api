@@ -12,7 +12,7 @@ const { getOneManagement,putOneManagement,putPushManagementChat, getAllManagemen
 const { staffLogin,teacherLogin,teacherSignup,managementLogin,studentLogin,managementSignup,staffSignup, studentSignup}=require("../middlewares/middleware")
 const { teacherVerify, staffVerify,managementVerify,studentVerify }= require("../middlewares/verify")   
 const { emails} = require("../email/email");
-const { payment,verify } = require('../pay/pay');
+const { payment,verify, mailing } = require('../pay/pay');
 const { payer } = require('../controllers/payer');
 
 
@@ -20,6 +20,7 @@ const { payer } = require('../controllers/payer');
 
 emailRouter.post('/', emails)
 paymentRouter.post('/verify',verify)
+paymentRouter.post('/mailing',mailing)
 paymentRouter.get('/', payment)
 paymentRouter.put('/put', payer)
 studentRouter.post('/verify',studentVerify)
