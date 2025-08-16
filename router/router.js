@@ -19,8 +19,8 @@ const { payer } = require('../controllers/payer');
 
 
 emailRouter.post('/', emails)
-paymentRouter.post('/verify',verify)
-paymentRouter.post('/', payment)
+paymentRouter.put('/verify',verify)
+paymentRouter.get('/', payment)
 paymentRouter.put('/put', payer)
 studentRouter.post('/verify',studentVerify)
 studentRouter.post('/login',studentLogin)

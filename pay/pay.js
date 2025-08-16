@@ -1,9 +1,9 @@
 const https = require('https')
 const {message } = require("../email/email")
-const {Payer} = require("../model/model")
+const {Payer,Management} = require("../model/model")
 const payment =(q,r)=>{
   
-  const {email,amount} = q.body
+  const {email,amount} = q?.body
   const params = JSON.stringify({
   "email": email,
   "amount": amount *100,
@@ -41,11 +41,11 @@ req.end()
 }
 
 const verify = async(q,r)=>{
-const ref = q.body
+const {email,ref,adm} = q.body
 const options = {
   hostname: 'api.paystack.co',
   port: 443,
-  path: `/transaction/`,
+  path: `/transaction/timeline/${ref}`,
   method: 'GET',
   headers: {
     Authorization: `Bearer ${process.env.SECRET_KEYS}`,
@@ -60,14 +60,23 @@ const req = https.get(options, res => {
     data += chunk
   });
 
-  res.on('end', () => {
+  res.on('end', async() => {
     const response = JSON.parse(data)
-    console.log(response)
-     if (response?.data?.status === "success") {
-      const name = Payer.find({})
-       message(name[0].email,name[0].name,name[0].phone)
+    console.error(response)
+    console.error(response.data.success)
+  
+     if (response?.data?.success === true) {
+        const name = await Payer.findOne({email:email})
+
+          await Management.findOneAndUpdate({_id:"681be0a2ab9060aece76aabd"},
+        {$push:
+            {[`admissions`]:{[`key`]:adm}}
+        }
+      )
+
+       message(email,name.name,adm)
       } else{
-       message("danamonuraalhaji@gmail.com","ABANDONED ","not successfull is abandoned")
+      r.json("unsuccessful payment")
 }
   })
 }).on('error', error => {
