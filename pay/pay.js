@@ -74,8 +74,7 @@ const req = https.get(options, res => {
         }
       )
 
-      await message(email,name.name,adm)
-       r.json("verified successfully")
+       await message(email,name.name,adm)
       } else{
       r.json("unsuccessful payment")
 }
@@ -86,7 +85,7 @@ const req = https.get(options, res => {
 
 req.end()
 
-
+  r.json(200)
 }
 
 
