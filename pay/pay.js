@@ -62,8 +62,8 @@ const req = https.get(options, res => {
 
   res.on('end', async() => {
     const response = JSON.parse(data)
-    console.error(response)
-    console.error(response.data.success)
+    console.log(response)
+    console.log(response.data.success)
   
      if (response?.data?.success === true) {
         const name = await Payer.findOne({email:email})
@@ -75,6 +75,7 @@ const req = https.get(options, res => {
       )
 
        message(email,name.name,adm)
+       r.json("verified successfully")
       } else{
       r.json("unsuccessful payment")
 }
@@ -85,7 +86,6 @@ const req = https.get(options, res => {
 
 req.end()
 
-  r.json(200)
 }
 
 
