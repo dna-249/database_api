@@ -25,7 +25,7 @@ app.use(express.urlencoded({
 
 mongoose.connect(process.env.secret).
 then(()=> console.log("connected to database")).
-catch(err => console.log("not connected"))
+catch(err => console.log(err))
 
 
 app.get("/",(req,res)=>{
