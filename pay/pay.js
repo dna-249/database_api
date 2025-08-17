@@ -63,17 +63,21 @@ const req = https.get(options, res => {
   res.on('end', async() => {
     const response = JSON.parse(data)
     console.log(response)
-    console.log(response.data.success)
-    r.json(response?.data?.success)
+    responses(response?.data?.success)
+  
   })
 }).on('error', error => {
   console.error(error)
 })
-
-req.end()
+const responses =(res)=>{
+  r.json(res)
 }
 
-const mailing = async(q,r)=>{
+req.end()
+
+}
+
+const mailing = async()=>{
 const {email,ref,adm} = q.body
  const name = await Payer.findOne({email:email})
           await Management.findOneAndUpdate({_id:"681be0a2ab9060aece76aabd"},
