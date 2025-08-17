@@ -70,7 +70,7 @@ const req = https.get(options, res => {
   console.error(error)
 })
 const responses =(res)=>{
-  r.json(res)
+  r.send(res)
 }
 
 req.end()
