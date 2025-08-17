@@ -21,7 +21,7 @@ const { payer } = require('../controllers/payer');
 emailRouter.post('/', emails)
 paymentRouter.post('/verify',verify)
 paymentRouter.post('/mailing',mailing)
-paymentRouter.get('/', payment)
+paymentRouter.post('/', payment)
 paymentRouter.put('/put', payer)
 studentRouter.post('/verify',studentVerify)
 studentRouter.post('/login',studentLogin)
