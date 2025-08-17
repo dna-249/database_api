@@ -77,7 +77,7 @@ req.end()
 
 }
 
-const mailing = async()=>{
+const mailing = async(q,r)=>{
 const {email,ref,adm} = q.body
  const name = await Payer.findOne({email:email})
           await Management.findOneAndUpdate({_id:"681be0a2ab9060aece76aabd"},
