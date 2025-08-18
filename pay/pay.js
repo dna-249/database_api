@@ -84,7 +84,7 @@ const {email,ref,adm} = q.body
         {$push:
             {[`admissions`]:{[`key`]:adm}}
         })
-       await message(email,name.name,adm)
+       await message(email,name?.name,adm)
      
   r.json("mail sent")
 
