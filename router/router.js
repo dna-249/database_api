@@ -13,7 +13,7 @@ const { staffLogin,teacherLogin,teacherSignup,managementLogin,studentLogin,manag
 const { teacherVerify, staffVerify,managementVerify,studentVerify }= require("../middlewares/verify")   
 const { emails} = require("../email/email");
 const { payment,verify, mailing,getPayer } = require('../pay/pay');
-const { payer } = require('../controllers/payer');
+const { payer ,postPayer} = require('../controllers/payer');
 
 
 
@@ -22,7 +22,7 @@ emailRouter.post('/', emails)
 paymentRouter.post('/verify',verify)
 paymentRouter.post('/mailing',mailing)
 paymentRouter.post('/', payment)
-paymentRouter.put('/put', payer)
+paymentRouter.put('/put', postPayer)
 paymentRouter.get('/get', getPayer)
 studentRouter.post('/verify',studentVerify)
 studentRouter.post('/login',studentLogin)
