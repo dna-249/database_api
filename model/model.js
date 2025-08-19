@@ -3,7 +3,8 @@ const mongoose = require("mongoose")
 const payer = mongoose.Schema({
         email:{type:String},
         name:{type:String},
-        phone:{type:String}
+        phone:{type:String},
+        date:{type:String}
 })
 
 const student= mongoose.Schema({

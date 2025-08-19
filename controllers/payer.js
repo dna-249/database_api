@@ -2,12 +2,13 @@
 const {Payer} = require("../model/model")
 
 const postPayer =async(req,res) =>{
-     const {name,phone,email} = req.body
+     const {name,phone,email,date} = req.body
      try {
          const client =  await Payer.create({
           name:name,
           phone:phone,
-          email:email
+          email:email,
+          date:date
      })
      res.json(client)
      } catch (error) {
