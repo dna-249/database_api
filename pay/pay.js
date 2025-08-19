@@ -91,6 +91,14 @@ const {email,ref,adm} = q.body
 
 }
 
+const getPayer =async(q,r)=>{
+  try {
+      const payer = await Payer.find({})
+      r.json(payer)
+  } catch (error) {
+    r.json(error)
+  }
 
+}
 
-module.exports = {payment,verify,mailing}
+module.exports = {payment,verify,mailing,getPayer}
