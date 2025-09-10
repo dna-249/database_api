@@ -6,6 +6,7 @@ const app = express()
 const cors = require("cors");
 const mongoose = require("mongoose")
 const {emailRouter,paymentRouter,studentRouter,managementRouter,teacherRouter, staffRouter} = require("./router/router");
+const { postPayer } = require("./controllers/payer");
 
 
 
@@ -29,8 +30,9 @@ catch(err => console.log(err))
 
 
 app.get("/",(req,res)=>{
-    res.send("hello  from backend")
-    
+    const {data} = req.body
+    res.send(200)
+    postPayer(data.status,data.amount,data.channel,data.currency)
 })
 
 app.use("/student", studentRouter)
