@@ -11,7 +11,7 @@ const postPayer =async(name,phone,email,date) =>{
      })
     
      } catch (error) {
-        console.log(error)  
+        console.log('error')  
      }
     
 }

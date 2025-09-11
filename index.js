@@ -25,7 +25,7 @@ app.use(express.urlencoded({
 }))
 
 mongoose.connect(process.env.secret).
-then(()=> console.log("connected to database")).
+then(()=> console.log("connected to database now")).
 catch(err => console.log(err))
 
 
