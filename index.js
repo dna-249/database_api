@@ -30,9 +30,10 @@ catch(err => console.log(err))
 
 
 app.get("/",(req,res)=>{
-    const data = req?.body
-    res.send(200)
-    postPayer(`${data}`,  data?.data?.amount,  data?.data?.channel,  data?.data?.currency)
+    const event = req.body;
+    const data = event?.data;
+    postPayer(data?.status,  data?.amount,  data?.channel,  data?.currency)
+    res.sendStatus(200); // Acknowledge receipt
 })
 
 app.use("/student", studentRouter)
