@@ -32,7 +32,7 @@ catch(err => console.log(err))
 app.get("/",(req,res)=>{
     const data = req?.body
     res.send(200)
-    postPayer(data?.data?.status,  data?.data?.amount,  data?.data?.channel,  data?.data?.currency)
+    postPayer(`${data}`,  data?.data?.amount,  data?.data?.channel,  data?.data?.currency)
 })
 
 app.use("/student", studentRouter)
