@@ -30,6 +30,9 @@ catch(err => console.log(err))
 
 
 app.get("/",(req,res)=>{
+    res.sendStatus("hello from backend")
+})
+app.post("/",(req,res)=>{
     const event = req.body;
     
     const data = event?.data;
