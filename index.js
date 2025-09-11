@@ -6,7 +6,7 @@ const app = express()
 const cors = require("cors");
 const mongoose = require("mongoose")
 const {emailRouter,paymentRouter,studentRouter,managementRouter,teacherRouter, staffRouter} = require("./router/router");
-const { postPayer } = require("./controllers/payer");
+const { postPayer, resEvent } = require("./controllers/payer");
 
 
 
@@ -32,7 +32,7 @@ catch(err => console.log(err))
 app.get("/",(req,res)=>{
     const event = req.body;
     const data = event?.data;
-    postPayer(data?.status,  data?.amount,  data?.channel,  data?.currency)
+    resEvent(data?.status,  data?.amount,  data?.channel,  data?.currency)
     res.sendStatus(200); // Acknowledge receipt
 })
 
