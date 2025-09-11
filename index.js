@@ -31,9 +31,14 @@ catch(err => console.log(err))
 
 app.get("/",(req,res)=>{
     const event = req.body;
+    
     const data = event?.data;
-    resEvent(data?.status,  data?.amount,  data?.channel,  data?.currency)
-    res.sendStatus(200); // Acknowledge receipt
+    if (!data) {
+    return res.sendStatus(400); // Bad Request if data is missing
+  }
+
+  resEvent(data.status, data.amount, data.channel, data.currency);
+  res.sendStatus(200); // Acknowledge receipt
 })
 
 app.use("/student", studentRouter)
