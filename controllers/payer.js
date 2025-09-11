@@ -9,7 +9,7 @@ const postPayer =async(name,phone,email,date) =>{
           email:email,
           date:date
      })
-    
+       console.log("created successfully")
      } catch (error) {
         console.log('error')  
      }
