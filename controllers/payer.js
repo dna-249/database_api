@@ -2,7 +2,7 @@
 const {Payer} = require("../model/model")
 
 const postPayer =async(req,res) =>{
-     const {name,phone,email,date} = req.body
+     const {name,phone,email,date} = req?.body
        try {
          const client =  await Payer.create({
           name:name,
@@ -17,20 +17,7 @@ const postPayer =async(req,res) =>{
     
 }
 
-const resEvent =async(name,phone,email,date) =>{
-       try {
-          await Payer.create({
-          name:name,
-          phone:phone,
-          email:email,
-          date:date
-     })
-       console.log("created successfully")
-     } catch (error) {
-        console.log('error')  
-     }
-    
-}
+
 const payer=  async(req,res)=>{
    try {
     const name = await Payer.find({})
@@ -40,4 +27,4 @@ const payer=  async(req,res)=>{
     
    }
 }
-module.exports = {payer,postPayer,resEvent}
+module.exports = {payer,postPayer}

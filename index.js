@@ -6,8 +6,6 @@ const app = express()
 const cors = require("cors");
 const mongoose = require("mongoose")
 const {emailRouter,paymentRouter,studentRouter,managementRouter,teacherRouter, staffRouter} = require("./router/router");
-const { postPayer, resEvent } = require("./controllers/payer");
-
 
 
 const corsConfig = {
@@ -32,17 +30,8 @@ catch(err => console.log(err))
 app.get("/",(req,res)=>{
     res.sendStatus("hello from backend")
 })
-app.post("/",(req,res)=>{
-    const event = req.body;
-    
-    const data = event?.data;
-    if (!data) {
-    return res.sendStatus(400); // Bad Request if data is missing
-  }
 
-  resEvent(data.status, data.amount, data.channel, data.currency);
-  res.sendStatus(200); // Acknowledge receipt
-})
+
 
 app.use("/student", studentRouter)
 app.use("/staff", staffRouter)
